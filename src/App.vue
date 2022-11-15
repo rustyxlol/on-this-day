@@ -10,13 +10,13 @@
             <h3 class="author">{{ author }}</h3>
           </div>
         </div>
-        <input
-          type="button"
-          class="button-primary"
-          value="What else?"
-          @click="getQuote"
-        />
       </div>
+      <input
+        type="button"
+        class="button-primary"
+        value="What else?"
+        @click="getQuote"
+      />
     </div>
   </div>
 </template>
@@ -63,5 +63,26 @@ export default {
 .section-heading,
 .section-description {
   margin-bottom: 1.2rem;
+}
+
+.container {
+  border: 5px solid rgb(74, 73, 73);
+  border-radius: 5px;
+}
+
+.fact-box {
+  padding: 20px;
+}
+
+input[type="button"].button-primary {
+  margin-top: 20px;
+  background-color: rgb(74, 73, 73) !important;
+  border-color: rgb(41, 31, 31) !important;
+}
+input[type="button"].button-primary:hover {
+  background-color: rgb(0, 0, 0) !important;
+}
+input[type="button"].button-primary:active {
+  background-color: rgb(35, 52, 35) !important;
 }
 </style>
