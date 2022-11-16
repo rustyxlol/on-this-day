@@ -3,7 +3,7 @@
     <div class="section get-help">
       <div class="container">
         <div class="fact-box">
-          <h4 class="date">{{ display_event.year }} {{ month }} {{ day }}</h4>
+          <h4 class="date">{{ month }} {{ day }} {{ display_event.year }}</h4>
           <div class="loading" v-if="loading">Loading....</div>
           <div v-else>
             <h3 class="fact">{{ display_event.text }}</h3>
