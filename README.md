@@ -18,6 +18,7 @@ On This Day is a minimalist Vue3 application made for getting my hands dirty wit
   - [Day 3 - AWS IAM and EC2](#day-3---aws-iam-and-ec2)
     - [Dockered EC2 Notes](#dockered-ec2-notes)
     - [Apache Server Notes](#apache-server-notes)
+    - [Backup and Restore](#backup-and-restore)
     - [Notes](#notes-2)
 
 ## Day 1 - Vue
@@ -40,9 +41,12 @@ Successfully containerized the Vue application and made sure the pages were bein
 
 **TODO:** docker-compose
 
+---
+
 ### Notes
 
 1. Docker desktop is pretty nice
+2. Why would O'Reilly take KataCoda down? :(
 
 ## Day 3 - AWS IAM and EC2
 
@@ -85,6 +89,31 @@ Make sure your security group isn't blocking anything here as well.
 5. Restart the server `sudo service httpd restart`
 6. Use the instance's **public ip**, make sure its `HTTP`
 
+---
+
+### Backup and Restore
+
+Rather small topic which I didn't want to save until next day. The task here is to basically take a snapshot of the current EC2 instance, delete it and redeploy it from the snapshot.
+
+1. Go to volumes, create a snapshot of the volume of your EC2 instance
+2. Go to snapshots and create an AMI from the snapshot you created
+3. Go to AMIs and launch instance from the AMI you created
+4. Make sure to start `httpd` and ensure that the website is still online
+
+You can run `sudo service httpd start` when creating an instance by just putting the command in user data when creating an instance.
+
+For reference:
+
+```sh
+#!/bin/bash -xe
+
+sudo service httpd start
+```
+
+---
+
 ### Notes
 
 1. General syntax for AWS-CLI is basically `aws [service] [command]`, so something like `aws ec2 describe-instances` will give you a list of all instances based on format you specified during `aws configure`
+2. IAM is incredibly complex, the reason we don't see the complexity is because we're barely working with one or two services.
+3. While creating an instance and stuff is point and click, IaaS services like Terraform can be used to automate the entire process of creating an instance and populating it.
