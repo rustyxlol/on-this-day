@@ -1,0 +1,8 @@
+The following are datatypes: 
+I'm a true
+I'm a String!
+I'm a number 1
+I'm a list_item1
+I'm a list number 2
+I'm a map entry with key1:value1
+I'm an object entry with name:bella

@@ -20,6 +20,8 @@ On This Day is a minimalist Vue3 application made for getting my hands dirty wit
     - [Apache Server Notes](#apache-server-notes)
     - [Backup and Restore](#backup-and-restore)
     - [Notes](#notes-2)
+  - [Day 4 - Terraform](#day-4---terraform)
+    - [Notes](#notes-3)
 
 ## Day 1 - Vue
 
@@ -73,11 +75,11 @@ Oh and make sure to open your ports in the security group!
 3. Add user to group `sudo usermod -a -G docker ec2-user`
 4. Logout and login
 5. `docker pull ...`
-6. `docker run -d -p ...`
+6. `docker run -d -p 5000:8080 ...`
 7. Use the instance's **public ip**, make sure its `HTTP`
 
 **Without Docker**  
-Instead of installing docker, we'll be installing Apache server and host `dist` folder on it. So build the project locally and move the `dist` folder to `/var/www/html`  
+Instead of installing docker, we'll be installing Apache server and host `dist` folder (or whatever the folder you got after running building the project). So build the project locally and move the `dist` folder to `/var/www/html`  
 Make sure your security group isn't blocking anything here as well.
 
 ### Apache Server Notes
@@ -117,3 +119,46 @@ sudo service httpd start
 1. General syntax for AWS-CLI is basically `aws [service] [command]`, so something like `aws ec2 describe-instances` will give you a list of all instances based on format you specified during `aws configure`
 2. IAM is incredibly complex, the reason we don't see the complexity is because we're barely working with one or two services.
 3. While creating an instance and stuff is point and click, IaaS services like Terraform can be used to automate the entire process of creating an instance and populating it.
+
+## Day 4 - Terraform
+
+Infrastructure as Code comes in three flavors; configuration, application and provisioning. Terraform is for provisioning resources on the Cloud(or even locally). It felt quite easy to get into and understand but I believe the hard part of it is yet to come.
+
+So far I've learnt about basic provisioning and some nomenclature
+
+**Programs covered today:**
+
+1. Creating and managing a local file
+2. Understanding input and output variables
+3.
+
+### Notes
+
+1. Terraform has a very neat nomenclature, as in:  
+`resource "local_file" "tf_hello_file"`  
+the syntax is as follows:  
+`resource "<provider>_<resource>" "identifier"`  
+2. Refer to the documentation for getting all the supported arguments for a given resource, in this case it was `local` provider and the resource was `file`
+3. Terraform contains a bunch of types; string, number, bool, any, list, map, set, object and tuple
+4. `-var` arg takes the highest precedence, followed by `.auto.tfvars`, then `.tfvars` and finally environment variables
+5. When doing implicit dependency(associating one resource with another using interpolation), code might not look clean. In order to obtain explicit dependency, one must use `depends_on` argument in the resource which requires another resource
+6. One can use output block to see output variables after using `apply`, and one can see the output variables using `terraform output`, or a specific output using `terraform output <output_variable>`
+7. Output variables are for other IaC tools like Ansible
+8. `.tfstate` contains your metadata, perhaps don't touch it unless you know what you're doing. Terraform refreshes state everytime, so you can use `--refresh=false` argument when planning/applying
+9. `.tfstate` is for collaboration, everyone must have the latest `.tfstate` file so store it REMOTELY if collaborating
+10. `.tfstate` contains some sensitive information so try to keep it in a secure storage e.g. S3, TF Cloud
+11. Some commands:
+    1. `terraform fmt` - formats
+    2. `terraform show` - shows current state of infrastructure
+    3. `terraform providers` - shows all providers
+    4. `terraform providers mirror /path/to/other/directory` - copies plugins/providers to other directory
+    5. `terraform output` - all outputs
+    6. `terraform output <output_variable>`
+    7. `terraform refresh` - syncs state file
+    8. `terraform graph` - generates a dependency graph for visualization software like graphviz
+
+12. Terraform has lifecycle argument which helps you establish an order of apply or re-apply, for example: in a resource -  ```lifecycle { prevent_delete = true}```
+13. You can also specify `ignore_changes` in lifecycle to prevent terraform from applying changes, like AWS instance names(tags)
+14. Data sources are similar to resources but only read infrasturcture and are "logical"
+15. Meta arguments: lifecycle, depends_on, for_each.
+16. `for_each = toset(var.filename)`, count is similar but creates undesirable results since it creates resources as a **list**
