@@ -24,6 +24,8 @@ On This Day is a minimalist Vue3 application made for getting my hands dirty wit
     - [Notes](#notes-3)
   - [Day 5 - Terraform and AWS](#day-5---terraform-and-aws)
     - [Notes](#notes-4)
+  - [Day 6 - Terraform and AWS Continued](#day-6---terraform-and-aws-continued)
+    - [Notes](#notes-5)
 
 ## Day 1 - Vue
 
@@ -173,6 +175,16 @@ CloudAcademy has a few cool exercises to make full use of Terraform and AWS, alt
 **Exercise 1:** Create a simple AWS VPC spanning 2 AZs. Public subnets will be created, together with an internet gateway, and single route table. A t3.micro instance will be deployed and installed with Nginx for web serving. Security groups will be created and deployed to secure all network traffic between the various components.  
 
 Quite straightforward, do note that creating VPC will create a default route table so if you don't want an extra route table, use the default route table resource!
+
+### Notes
+
+Exercises can be found under terraform folder
+
+## Day 6 - Terraform and AWS Continued
+
+One exercise today as well, it tackles ALB and ASG.
+
+**Exercise 2:** Create an advanced AWS VPC spanning 2 AZs with both public and private subnets. An internet gateway and NAT gateway will be deployed into it. Public and private route tables will be established. An application load balancer (ALB) will be installed which will load balance traffic across an auto scaling group (ASG) of Nginx web servers. Security groups will be created and deployed to secure all network traffic between the various components.
 
 ### Notes
 
