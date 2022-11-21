@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "ap-south-1"
+  region = var.region
 }
 
 resource "aws_vpc" "main" {
@@ -25,7 +25,7 @@ resource "aws_subnet" "subnet1" {
   vpc_id     = aws_vpc.main.id
   cidr_block = "10.0.0.0/20"
 
-  availability_zone = "ap-south-1a"
+  availability_zone = var.availability_zones[0]
   tags = {
     Name = "exercise-1-public-1"
   }
@@ -35,7 +35,7 @@ resource "aws_subnet" "subnet2" {
   vpc_id     = aws_vpc.main.id
   cidr_block = "10.0.128.0/20"
 
-  availability_zone = "ap-south-1b"
+  availability_zone = var.availability_zones[1]
   tags = {
     Name = "exercise-1-public-2"
   }
@@ -98,7 +98,7 @@ resource "aws_security_group" "allow_http" {
 }
 
 resource "aws_instance" "ec2_instance" {
-  ami           = "ami-074dc0a6f6c764218"
+  ami           = var.amis[var.region]
   instance_type = "t2.micro"
   subnet_id = aws_subnet.subnet1.id
   vpc_security_group_ids = [aws_security_group.allow_http.id]
