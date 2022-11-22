@@ -26,6 +26,7 @@ On This Day is a minimalist Vue3 application made for getting my hands dirty wit
     - [Notes](#notes-4)
   - [Day 6 - Terraform and AWS Continued](#day-6---terraform-and-aws-continued)
     - [Notes](#notes-5)
+  - [Day 7 - Ansible](#day-7---ansible)
 
 ## Day 1 - Vue
 
@@ -189,3 +190,13 @@ One exercise today as well, it tackles ALB and ASG.
 ### Notes
 
 Exercises can be found under terraform folder
+
+## Day 7 - Ansible
+
+An introduction to Ansible. It is a flavor of IaC, configuration management. It's quite popular because it is so easily accessible, as long as you have python that is. Simply run `pip3 install ansible` and voila, you have it!
+
+Some of the introductory stuff I did today are:
+
+1. Ping an EC2 instance by configuring public IP and ssh keypair in the inventory and overriding the ansible defaults so that running ansible refers to the inventory file that I made `ansible example -m ping`
+2. Running ad-hoc commands, such as `ansible example -a "free -h"`, or `ansible example -a "date"`
+3. Difference between `-a` and `-m`, `-m command` is the default, which basically runs a command ON the server
