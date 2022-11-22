@@ -1,11 +1,11 @@
 variable "filename" {
-  default = "D:\\Programming\\TSOP\\on-this-day\\terraform\\day4\\exercises\\local_file\\results\\05_input_variables_explicit.txt"
+  default = "./output/07_output_variables.txt"
 }
 variable "content" {
   default = "Someone owns a house!"
 }
 variable "prefix" {
-  default = "Mr"
+  default = ["Mr", "Mrs", "Ms"]
 }
 variable "separator" {
   default = "."

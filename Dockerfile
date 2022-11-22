@@ -4,11 +4,11 @@ RUN npm install -g http-server
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY on-this-day/package*.json ./
 
 RUN npm install
 
-COPY . .
+COPY on-this-day/ .
 
 RUN npm run build
 

@@ -1,5 +1,5 @@
 variable "filename" {
-  default = "D:\\Programming\\TSOP\\on-this-day\\terraform\\day4\\exercises\\local_file\\results\\04_input_variables_implicit.txt"
+  default = "./output/05_input_variables_explicit.txt"
 }
 variable "content" {
   default = "Someone owns a house!"

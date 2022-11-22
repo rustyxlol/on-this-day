@@ -1,5 +1,5 @@
 variable "filename" {
-  default = "D:\\Programming\\TSOP\\on-this-day\\terraform\\day4\\exercises\\local_file\\results\\06_data_types.txt"
+  default = "./output/06_data_types.txt"
 }
 variable "content" {
   default = "The following are datatypes: "
