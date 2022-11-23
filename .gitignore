@@ -65,3 +65,6 @@ terraform.rc
 
 # Ignore VSCode folder
 .vscode
+
+# Ignore vagrant created files
+.vagrant/
