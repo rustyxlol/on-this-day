@@ -200,6 +200,7 @@ Some of the introductory stuff I did today are:
 1. Ping an EC2 instance by configuring public IP and ssh keypair in the inventory and overriding the ansible defaults so that running ansible refers to the inventory file that I made `ansible example -m ping`
 2. Running ad-hoc commands, such as `ansible example -a "free -h"`, or `ansible example -a "date"`
 3. Difference between `-a` and `-m`, `-m command` is the default, which basically runs a command ON the server
+4. Installing httpd on EC2 instances and playing around with different modules.
 
 Vagrant is basically a IaC for virtual machines, the definition cannot be simpler than this. It provisions your VM's OS, networks, resources, users, you name it.
 

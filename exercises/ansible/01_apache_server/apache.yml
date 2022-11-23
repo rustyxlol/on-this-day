@@ -1,0 +1,18 @@
+---
+- name: Apache server installation
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Download and install HTTPD
+      yum:
+        name: httpd
+        state: latest
+    - name: Enable and run HTTPD
+      service:
+        name: httpd
+        enabled: true
+        state: started
+    - name: Move web.html to /var/www/html/
+      copy:
+        src: web.html
+        dest: /var/www/html/index.html

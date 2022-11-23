@@ -1,0 +1,6 @@
+---
+- name: Ping all servers
+  hosts: webservers
+  tasks:
+    - name: Pinged all servers
+      action: ping
