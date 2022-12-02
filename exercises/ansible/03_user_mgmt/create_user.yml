@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Create a group named "temporary_users"
+      ansible.builtin.group:
+        name: temporary_users
+        state: present
+        gid: 69420
+        
+    
+    - name: Create a user named "guest_user"
+      user:
+        name: guest_user
+        comment: A guest user
+        uid: 420
+        group: temporary_users

@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  tasks:
+    - name: remove one file
+      file:
+        path: "../results/{{item}}"
+        state: absent
+
+      with_items:
+        - test_01.txt
+        - test_02.txt
+        - test_03.txt

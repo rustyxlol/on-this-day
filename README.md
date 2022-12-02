@@ -27,6 +27,9 @@ On This Day is a minimalist Vue3 application made for getting my hands dirty wit
   - [Day 6 - Terraform and AWS Continued](#day-6---terraform-and-aws-continued)
     - [Notes](#notes-5)
   - [Day 7 - Ansible, and a teeny tiny bit of Vagrant](#day-7---ansible-and-a-teeny-tiny-bit-of-vagrant)
+  - [Day 8 - Microsoft Azure Certification](#day-8---microsoft-azure-certification)
+  - [Day 9 - Back to configuration management and AWS](#day-9---back-to-configuration-management-and-aws)
+    - [Notes](#notes-6)
 
 ## Day 1 - Vue
 
@@ -205,3 +208,23 @@ Some of the introductory stuff I did today are:
 Vagrant is basically a IaC for virtual machines, the definition cannot be simpler than this. It provisions your VM's OS, networks, resources, users, you name it.
 
 Diving into it is super simply, install it along with a VM solution like VirtualBox, Hyper V or anything else, find an image*box) you want from vagrant cloud, create a folder and just run `vagrant init imagename`, modify the `Vagrant` file as you desire, be it number of CPU cores dedicated to that box or converting it into a public network for hosting your website.
+
+## Day 8 - Microsoft Azure Certification
+
+Learned a lot about the cloud and decided to take the test.
+
+## Day 9 - Back to configuration management and AWS
+
+~~Failed~~ Tried some large scale VPC project by trying to achieve cross regional peering and load balancing/autoscaling, sadly that is not how AWS works.
+
+Built a RESTful API with API Gateway, Lambda and DynamoDB. Excellent experience with Python.
+
+Built an e-mail notification system with Lambda, DynamoDB and SNS to get an alert whenever a database entry was modified.
+
+Basic Ansible workouts like creating a file, managing a file, creating users and removing them.
+
+### Notes
+
+1. Use `--ask-become-pass` to grant a playbook sudo privileges
+2. Builtin modules are amazing in Ansible
+3. Research before committing to a network project - it may not be feasible or even practical

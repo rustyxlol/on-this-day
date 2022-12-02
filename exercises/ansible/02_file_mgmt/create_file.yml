@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  tasks:
+    - name: create a directory
+      file:
+        path: "../results/"
+        state: directory
+
+    - name: populate directory    
+      file:
+        path: "../results/test_file.txt"
+        state: touch

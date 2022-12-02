@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  tasks:
+    - name: change permissions
+      file:
+        path: "../results/test_content.txt"
+        mode: u=rwx,g=rx,o=rx

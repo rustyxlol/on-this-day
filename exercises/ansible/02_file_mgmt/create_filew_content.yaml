@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  tasks:
+  - name: create a file with content
+    copy:
+      dest: "../results/test_content.txt"
+      content:  |
+                why is there
+                a pipe operator here
+                ???
+                at least it works

@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  tasks:
+    - name: remove one file
+      file:
+        path: "../results/test_file.txt"
+        state: absent

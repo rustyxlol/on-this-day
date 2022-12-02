@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Remove a user named "guest_user"
+      user:
+        uid: 420
+        name: guest_user
+        state: absent
+        
+    - name: Remove a group named "temporary_users"
+      ansible.builtin.group:
+        name: temporary_users
+        state: absent
+        gid: 69420
+        
+    
