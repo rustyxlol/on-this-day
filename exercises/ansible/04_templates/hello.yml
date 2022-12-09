@@ -1,0 +1,7 @@
+---
+- name: Fill hello template
+  hosts: localhost
+  tasks:
+    - template:
+        src: hello.j2
+        dest: ../results/hello_template_filled.txt

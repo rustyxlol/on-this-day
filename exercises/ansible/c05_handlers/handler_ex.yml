@@ -1,0 +1,17 @@
+---
+- name: Debug tags
+  hosts:
+    - localhost
+  tasks:
+    - name: Debug Tasks
+      debug:
+        msg: "Debug tasks"
+      changed_when: true
+      notify:
+          Debug Handler
+
+  handlers:
+    - name: Debug Handler
+      debug:
+        msg: "Debug handler"
+
